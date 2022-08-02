@@ -27,7 +27,7 @@ export interface IMostInfoResponse {
   recentWinRate: Array<IChampionWinRate>;
 }
 
-export const emptyMostInfo: IMostInfoResponse = {
+export const emptyMostInfoResponse: IMostInfoResponse = {
   champions: [],
   recentWinRate: [],
 };

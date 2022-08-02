@@ -1,3 +1,8 @@
+export const enum LEAGUE_TYPE {
+  SOLORANKED = "솔랭",
+  FLEXRANKED = "자유 5:5 랭크",
+}
+
 export interface ILeague {
   hasResults: boolean;
   losses: number;

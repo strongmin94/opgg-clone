@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { OneLineTextOverflow } from "../../../../../styles/globalStyle";
 
 export const StyleContainer = styled.article`
   display: flex;
@@ -38,9 +39,7 @@ export const StyleUserName = styled.p`
   font-weight: bold;
   color: #242929;
   margin-bottom: 4px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  ${OneLineTextOverflow}
 `;
 
 export const StyleLadderInfo = styled.p`

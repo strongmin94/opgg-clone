@@ -1,5 +1,6 @@
 import { useMemo } from "react";
-import { IMostChampion } from "../../../interfaces/mostInfo";
+import { StyleKDA, StyleWinRate } from "../../../../styles/globalStyle";
+import { IMostChampion } from "../../../datas/mostInfo";
 import {
   StyleBottomInfo,
   StyleChampionThumbnail,
@@ -39,8 +40,12 @@ const MostChampionInfo = ({ item }: IProps) => {
       <StyleInfoWrapper>
         <StyleTopInfo>
           <StyleInfoItem textAlign="start">{item.name}</StyleInfoItem>
-          <StyleInfoItem textAlign="center">{`${kda}:1 평점`}</StyleInfoItem>
-          <StyleInfoItem textAlign="end">{`${winRate}%`}</StyleInfoItem>
+          <StyleInfoItem textAlign="center">
+            <StyleKDA kda={kda}>{`${kda}:1 평점`}</StyleKDA>
+          </StyleInfoItem>
+          <StyleInfoItem textAlign="end">
+            <StyleWinRate winRate={winRate}>{`${winRate}%`}</StyleWinRate>
+          </StyleInfoItem>
         </StyleTopInfo>
         <StyleBottomInfo>
           <StyleInfoItem textAlign="start">{`CS ${csPercent}`}</StyleInfoItem>

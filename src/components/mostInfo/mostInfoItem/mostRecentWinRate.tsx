@@ -1,5 +1,6 @@
 import { useMemo } from "react";
-import { IChampionWinRate } from "../../../interfaces/mostInfo";
+import { StyleWinRate } from "../../../../styles/globalStyle";
+import { IChampionWinRate } from "../../../datas/mostInfo";
 import {
   StyleChampionThumbnail,
   StyleContainer,
@@ -16,21 +17,23 @@ interface IProps {
 }
 
 const MostRecentWinRate = ({ item }: IProps) => {
-  const winPercent = useMemo<number>(() => {
+  const winRate = useMemo<number>(() => {
     return Math.round((item.wins / (item.wins + item.losses)) * 100);
   }, []);
-  const lossPercent = useMemo(() => {
-    return 100 - winPercent;
-  }, [winPercent]);
+  const lossRate = useMemo(() => {
+    return 100 - winRate;
+  }, [winRate]);
 
   return (
     <StyleContainer>
       <StyleChampionThumbnail src={item.imageUrl} alt={item.name} />
       <StyleRecentWinRateWrapper>
-        <StyleRecentWinRate>{`${winPercent}%`}</StyleRecentWinRate>
+        <StyleRecentWinRate>
+          <StyleWinRate winRate={winRate}>{`${winRate}%`}</StyleWinRate>
+        </StyleRecentWinRate>
         <StyleWinRateGraphWrapper>
-          <StyleWinBar width={winPercent}></StyleWinBar>
-          <StyleLossBar width={lossPercent} />
+          <StyleWinBar width={winRate}></StyleWinBar>
+          <StyleLossBar width={lossRate} />
           <StyleGraphInfo>
             <span>{item.wins && `${item.wins}승`}</span>
             <span>{item.losses && `${item.losses}패`}</span>

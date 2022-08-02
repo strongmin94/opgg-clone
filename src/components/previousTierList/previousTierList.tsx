@@ -1,4 +1,4 @@
-import { ITierRank } from "../../interfaces/summoner";
+import { ITierRank } from "../../datas/summoner";
 import { StyleContainer, StyleItem } from "./previousTierList.styled";
 
 interface IProps {

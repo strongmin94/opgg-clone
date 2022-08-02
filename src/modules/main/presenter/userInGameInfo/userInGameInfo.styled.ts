@@ -14,3 +14,7 @@ export const StyleLeftWrapper = styled.div`
 export const StyleRightWrapper = styled.div`
   width: 690px;
 `;
+
+export const StyleInGameSummaryWrapper = styled.div`
+  border: 1px solid #cdd2d2;
+`;

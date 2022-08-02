@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { OneLineTextOverflow } from "../../../../styles/globalStyle";
 
 export const StyleContainer = styled.li`
   display: flex;
@@ -40,9 +41,7 @@ export const StyleInfoItem = styled.span<{ textAlign: "start" | "center" | "end"
   flex: 1;
   min-width: 0;
   text-align: ${(props) => props.textAlign};
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  ${OneLineTextOverflow}
 `;
 
 export const StyleRecentWinRateWrapper = styled.div`

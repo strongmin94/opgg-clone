@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useMemo } from "react";
-import { ILeague } from "../../../interfaces/summoner";
+import { ILeague } from "../../../datas/summoner";
 import {
   StlyeLeagueType,
   StyleContainer,
@@ -25,8 +25,6 @@ const LeagueItem = ({ item }: IProps) => {
   const tierInfo = useMemo(() => {
     return `${item.tierRank.tier} ${item.tierRank.shortString.replace(/[^0-9]/g, "")}`;
   }, []);
-
-  console.log(tierInfo);
 
   return (
     <StyleContainer>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ITabItem } from "../../interfaces/tabItem";
+import { ITabItem } from "../../datas/tabItem";
 
 interface IMostInfoTabItem extends ITabItem {
   value: "champions" | "recentWinRate";

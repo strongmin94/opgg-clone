@@ -1,13 +1,8 @@
 import { useMemo } from "react";
-import { ILeague } from "../../interfaces/summoner";
-import { StyleContainer, StyleLeagueInfoItem } from "./leagueInfo.styled";
+import { ILeague, LEAGUE_TYPE } from "../../datas/summoner";
+import { StyleContainer } from "./leagueInfo.styled";
 import LeagueEmptyItem from "./leagueItem/leagueEmptyItem";
 import LeagueItem from "./leagueItem/leagueItem";
-
-export const enum LEAGUE_TYPE {
-  SOLO = "솔랭",
-  FREE = "자유 5:5 랭크",
-}
 
 interface IProps {
   leagues: Array<ILeague>;
@@ -15,25 +10,24 @@ interface IProps {
 
 const LeagueInfo = ({ leagues }: IProps) => {
   const soloLeague = useMemo<ILeague | undefined>(() => {
-    return leagues.find((item) => item.tierRank.name === LEAGUE_TYPE.SOLO);
+    return leagues.find((item) => item.tierRank.name === LEAGUE_TYPE.SOLORANKED);
   }, []);
 
   const freeLeague = useMemo<ILeague | undefined>(() => {
-    return leagues.find((item) => item.tierRank.name === LEAGUE_TYPE.FREE);
+    return leagues.find((item) => item.tierRank.name === LEAGUE_TYPE.FLEXRANKED);
   }, []);
-  console.log(leagues);
 
   return (
     <StyleContainer>
       {soloLeague ? (
         <LeagueItem item={soloLeague} />
       ) : (
-        <LeagueEmptyItem leagueType={LEAGUE_TYPE.SOLO} />
+        <LeagueEmptyItem leagueType={LEAGUE_TYPE.SOLORANKED} />
       )}
       {freeLeague ? (
         <LeagueItem item={freeLeague} />
       ) : (
-        <LeagueEmptyItem leagueType={LEAGUE_TYPE.FREE} />
+        <LeagueEmptyItem leagueType={LEAGUE_TYPE.FLEXRANKED} />
       )}
     </StyleContainer>
   );

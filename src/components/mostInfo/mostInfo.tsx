@@ -1,4 +1,4 @@
-import { IMostInfoResponse } from "../../interfaces/mostInfo";
+import { IMostInfoResponse } from "../../datas/mostInfo";
 import { StyleContainer, StyleMostInfoList, StyleTabItem, StyleTabList } from "./mostInfo.styled";
 import MostChampionInfo from "./mostInfoItem/mostChampionInfo";
 import MostRecentWinRate from "./mostInfoItem/mostRecentWinRate";
