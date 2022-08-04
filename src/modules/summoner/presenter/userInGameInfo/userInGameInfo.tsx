@@ -1,7 +1,7 @@
-import InGameInfo from "../../../../components/inGameInfo/inGameInfo";
-import InGameSummary from "../../../../components/InGameSummary/inGameSummary";
-import LeagueInfo from "../../../../components/leagueInfo/leagueInfo";
-import MostInfo from "../../../../components/mostInfo/mostInfo";
+import InGameInfo from "./inGameInfo/inGameInfo";
+import InGameSummary from "./InGameSummary/inGameSummary";
+import LeagueInfo from "./leagueInfo/leagueInfo";
+import MostInfo from "./mostInfo/mostInfo";
 import Navigation from "../../../../components/navigation/navigation";
 import { IMatchesResponse } from "../../../../datas/match";
 import { IMostInfoResponse } from "../../../../datas/mostInfo";

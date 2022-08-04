@@ -1,5 +1,5 @@
 import PreviousTierList from "../../../../components/previousTierList/previousTierList";
-import UserThumbnail from "../../../../components/userThumbnail/userThumbnail";
+import UserThumbnail from "./userThumbnail/userThumbnail";
 import { ISummoner } from "../../../../datas/summoner";
 import {
   StyleContainer,

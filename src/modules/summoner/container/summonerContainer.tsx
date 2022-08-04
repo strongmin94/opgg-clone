@@ -4,6 +4,7 @@ import { ISummoner } from "../../../datas/summoner";
 import UserInGameInfo from "../presenter/userInGameInfo/userInGameInfo";
 import UserSummary from "../presenter/userSummary/userSummary";
 import { StyleContainer } from "./summonerContainer.styled";
+import useSummonerContainer from "./useSummonerContainer";
 
 interface IProps {
   summoner: ISummoner;
@@ -12,6 +13,8 @@ interface IProps {
 }
 
 const SummonerContainer = ({ summoner, mostInfo, matches }: IProps) => {
+  useSummonerContainer();
+
   return (
     <StyleContainer>
       <UserSummary summoner={summoner} />

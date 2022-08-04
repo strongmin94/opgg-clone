@@ -7,7 +7,7 @@ const SearchItemSlice = createSlice({
   initialState,
   reducers: {
     addSearchList: (state, action: PayloadAction<string>) => {
-      return state.concat(action.payload);
+      return Array.from(new Set([action.payload].concat(state))).slice(0, 8);
     },
     removeSearchList: (state, action: PayloadAction<string>) => {
       return state.filter((item) => item !== action.payload);

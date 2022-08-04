@@ -1,6 +1,7 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { IGameInfo, MATCH_TYPE } from "../../../../datas/match";
 import { ITabItem } from "../../../../datas/tabItem";
+import useUpdateEffect from "../../../../hooks/useUpdateEffect";
 
 export interface IMatchTabItem extends ITabItem {
   value: MATCH_TYPE;
@@ -30,7 +31,7 @@ const useUserInGameInfo = ({ games }: IProps) => {
   const [selectedTab, setSelectedTab] = useState<IMatchTabItem>(matchTabList[0]);
   const [gameList, setGameList] = useState<Array<IGameInfo>>(games);
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     if (selectedTab.value === MATCH_TYPE.ALL) {
       setGameList(games);
     } else {

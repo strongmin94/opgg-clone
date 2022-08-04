@@ -1,10 +1,14 @@
-import { configureStore, Reducer } from "@reduxjs/toolkit";
+import { configureStore, Reducer, Store } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
-import { persistStore } from "redux-persist";
+import { Persistor, persistStore } from "redux-persist";
 import { reducer, persistedReducer } from "./rootReducer";
 
-const makeConfiguredStore = (reducer: Reducer) =>
-  configureStore({
+export interface CustomStore extends Store {
+  __persistor: Persistor;
+}
+
+const makeConfiguredStore = (reducer: Reducer) => {
+  const store = configureStore({
     reducer,
     middleware: (getDefaultMiddleware) => {
       return getDefaultMiddleware({
@@ -13,6 +17,9 @@ const makeConfiguredStore = (reducer: Reducer) =>
     },
   });
 
+  return store;
+};
+
 const makeStore = () => {
   const isServer = typeof window === "undefined";
 
@@ -20,8 +27,8 @@ const makeStore = () => {
     return makeConfiguredStore(reducer);
   } else {
     const store = makeConfiguredStore(persistedReducer);
-    const persistor = persistStore(store);
-    return { persistor, ...store };
+    (store as CustomStore).__persistor = persistStore(store);
+    return store;
   }
 };
 

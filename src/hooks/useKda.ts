@@ -9,16 +9,20 @@ interface IProps {
 
 const useKda = ({ kills, deaths, assists, totalGameCount }: IProps) => {
   const killAverage = useMemo<number>(() => {
-    return parseFloat((kills / totalGameCount).toFixed(1));
+    const result = parseFloat((kills / totalGameCount).toFixed(1));
+    return !isNaN(result) ? result : 0;
   }, [kills, totalGameCount]);
   const deathAverage = useMemo<number>(() => {
-    return parseFloat((deaths / totalGameCount).toFixed(1));
+    const result = parseFloat((deaths / totalGameCount).toFixed(1));
+    return !isNaN(result) ? result : 0;
   }, [deaths, totalGameCount]);
   const assistAverage = useMemo<number>(() => {
-    return parseFloat((assists / totalGameCount).toFixed(1));
+    const result = parseFloat((assists / totalGameCount).toFixed(1));
+    return !isNaN(result) ? result : 0;
   }, [assists, totalGameCount]);
   const kda = useMemo<number>(() => {
-    return parseFloat(((killAverage + assistAverage) / deathAverage).toFixed(1));
+    const result = parseFloat(((killAverage + assistAverage) / deathAverage).toFixed(1));
+    return !isNaN(result) ? result : 0;
   }, [killAverage, deathAverage, assistAverage]);
 
   return {

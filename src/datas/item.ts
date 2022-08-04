@@ -1,9 +1,13 @@
 import { ImageObj } from "./match";
 
-export interface IItem extends ImageObj {
-  name: string;
-  description: string;
-  plaintext: string;
+export interface IItemObject extends ImageObj {
+  itemInfo?: IItem;
+}
+
+export interface IItem {
+  name?: string;
+  description?: string;
+  plaintext?: string;
 }
 
 export interface IItemList {

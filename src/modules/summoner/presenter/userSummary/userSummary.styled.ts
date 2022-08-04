@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { OneLineTextOverflow } from "../../../../../styles/globalStyle";
+import { OneLineTextOverflow } from "../../../../styles/globalStyle";
 
 export const StyleContainer = styled.article`
   display: flex;

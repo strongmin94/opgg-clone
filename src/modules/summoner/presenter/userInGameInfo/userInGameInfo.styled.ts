@@ -3,16 +3,28 @@ import styled from "styled-components";
 export const StyleContainer = styled.article`
   display: flex;
   gap: 10px;
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+  }
 `;
 
 export const StyleLeftWrapper = styled.div`
   display: flex;
   width: 300px;
   flex-direction: column;
+
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+  }
 `;
 
 export const StyleRightWrapper = styled.div`
   width: 690px;
+
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+  }
 `;
 
 export const StyleInGameSummaryWrapper = styled.div`
