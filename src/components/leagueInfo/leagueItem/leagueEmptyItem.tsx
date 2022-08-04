@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { LEAGUE_TYPE } from "../leagueInfo";
+import { LEAGUE_TYPE } from "../../../datas/summoner";
 import {
   StyleEmptyContainer,
   StyleEmptyLeagueInfoWrapper,

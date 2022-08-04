@@ -17,4 +17,11 @@ export const StyleRightWrapper = styled.div`
 
 export const StyleInGameSummaryWrapper = styled.div`
   border: 1px solid #cdd2d2;
+  margin-bottom: 16px;
+`;
+
+export const StyleGameInfoList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `;

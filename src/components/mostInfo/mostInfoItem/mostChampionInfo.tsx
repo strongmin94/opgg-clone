@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { StyleKDA, StyleWinRate } from "../../../../styles/globalStyle";
 import { IMostChampion } from "../../../datas/mostInfo";
+import useKda from "../../../hooks/useKda";
 import {
   StyleBottomInfo,
   StyleChampionThumbnail,
@@ -21,18 +22,12 @@ const MostChampionInfo = ({ item }: IProps) => {
   const csPercent = useMemo<number>(() => {
     return parseFloat((item.cs / item.games).toFixed(1));
   }, [item]);
-  const killPercent = useMemo<number>(() => {
-    return parseFloat((item.kills / item.games).toFixed(1));
-  }, [item]);
-  const deathPercent = useMemo<number>(() => {
-    return parseFloat((item.deaths / item.games).toFixed(1));
-  }, []);
-  const assistPercent = useMemo<number>(() => {
-    return parseFloat((item.assists / item.games).toFixed(1));
-  }, [item]);
-  const kda = useMemo<number>(() => {
-    return parseFloat(((killPercent + assistPercent) / deathPercent).toFixed(1));
-  }, [killPercent, deathPercent, assistPercent]);
+  const { killAverage, deathAverage, assistAverage, kda } = useKda({
+    kills: item.kills,
+    deaths: item.deaths,
+    assists: item.assists,
+    totalGameCount: item.games,
+  });
 
   return (
     <StyleContainer>
@@ -49,7 +44,7 @@ const MostChampionInfo = ({ item }: IProps) => {
         </StyleTopInfo>
         <StyleBottomInfo>
           <StyleInfoItem textAlign="start">{`CS ${csPercent}`}</StyleInfoItem>
-          <StyleInfoItem textAlign="center">{`${killPercent} / ${deathPercent} / ${assistPercent}`}</StyleInfoItem>
+          <StyleInfoItem textAlign="center">{`${killAverage} / ${deathAverage} / ${assistAverage}`}</StyleInfoItem>
           <StyleInfoItem textAlign="end">{`${item.games}게임`}</StyleInfoItem>
         </StyleBottomInfo>
       </StyleInfoWrapper>

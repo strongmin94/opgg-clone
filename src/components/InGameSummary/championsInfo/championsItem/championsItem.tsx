@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { StyleKDA, StyleWinRate } from "../../../../../styles/globalStyle";
 import { IChampion } from "../../../../datas/match";
+import useKda from "../../../../hooks/useKda";
 import {
   StyleChampionName,
   StyleChampionRecord,
@@ -19,18 +20,12 @@ const ChampionsItem = ({ item }: IProps) => {
   const winRate = useMemo<number>(() => {
     return Math.round((item.wins / item.games) * 100);
   }, [item]);
-  const killPercent = useMemo<number>(() => {
-    return parseFloat((item.kills / item.games).toFixed(1));
-  }, []);
-  const deathPercent = useMemo<number>(() => {
-    return parseFloat((item.deaths / item.games).toFixed(1));
-  }, []);
-  const assistPercent = useMemo<number>(() => {
-    return parseFloat((item.assists / item.games).toFixed(1));
-  }, []);
-  const kda = useMemo<number>(() => {
-    return parseFloat(((killPercent + assistPercent) / deathPercent).toFixed(1));
-  }, [killPercent, deathPercent, assistPercent]);
+  const { kda } = useKda({
+    kills: item.kills,
+    deaths: item.deaths,
+    assists: item.assists,
+    totalGameCount: item.games,
+  });
 
   return (
     <StyleContaier>

@@ -22,7 +22,11 @@ const ChampionsInfo = ({ champions }: IProps) => {
   return (
     <StyleContainer>
       {championList.map((item, idx) =>
-        item ? <ChampionsItem key={`champion_${idx}`} item={item} /> : <ChampionsEmptyItem />
+        item ? (
+          <ChampionsItem key={`champion_${idx}`} item={item} />
+        ) : (
+          <ChampionsEmptyItem key={`champion_empty_${idx}`} />
+        )
       )}
     </StyleContainer>
   );

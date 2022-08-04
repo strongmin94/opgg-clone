@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { StyleKDA } from "../../../../styles/globalStyle";
 import { ISummary } from "../../../datas/match";
+import useKda from "../../../hooks/useKda";
 import {
   StyleContainer,
   StyleRecordInfo,
@@ -18,18 +19,12 @@ const RecordInfo = ({ summary }: IProps) => {
   const totalGameCount = useMemo<number>(() => {
     return summary.wins + summary.losses;
   }, []);
-  const killPercent = useMemo<number>(() => {
-    return parseFloat((summary.kills / totalGameCount).toFixed(1));
-  }, [totalGameCount]);
-  const deathPercent = useMemo<number>(() => {
-    return parseFloat((summary.deaths / totalGameCount).toFixed(1));
-  }, [totalGameCount]);
-  const assistPercent = useMemo<number>(() => {
-    return parseFloat((summary.assists / totalGameCount).toFixed(1));
-  }, [totalGameCount]);
-  const kda = useMemo<number>(() => {
-    return parseFloat(((killPercent + assistPercent) / deathPercent).toFixed(1));
-  }, [killPercent, deathPercent, assistPercent]);
+  const { killAverage, deathAverage, assistAverage, kda } = useKda({
+    kills: summary.kills,
+    deaths: summary.deaths,
+    assists: summary.assists,
+    totalGameCount,
+  });
 
   return (
     <StyleContainer>
@@ -37,7 +32,7 @@ const RecordInfo = ({ summary }: IProps) => {
         <StyleRecord>{`${totalGameCount}전 ${summary.wins}승 ${summary.losses}패`}</StyleRecord>
       </StyleRecordInfo>
       <StyleKDAInfoWrapper>
-        <StyleKDAInfo>{`${killPercent} / ${deathPercent} / ${assistPercent}`}</StyleKDAInfo>
+        <StyleKDAInfo>{`${killAverage} / ${deathAverage} / ${assistAverage}`}</StyleKDAInfo>
         <StyleKDAWrapper>
           <StyleKDA kda={kda}>{kda}</StyleKDA>
         </StyleKDAWrapper>

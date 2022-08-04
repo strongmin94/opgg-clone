@@ -31,6 +31,11 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+
+  button {
+    border: none;
+    cursor: pointer;
+  }
 `;
 
 export const StyleKDA = styled.span<{ kda: number }>`

@@ -1,3 +1,5 @@
+import { IMatchDetail } from "./matchDetail";
+
 export const enum MATCH_TYPE {
   ALL = "전체",
   NORMAL = "일반",
@@ -19,7 +21,6 @@ export const enum POSITION_TYPE {
 
 export interface IChampion {
   imageUrl: string;
-  // level: number;
   assists: number;
   deaths: number;
   games: number;
@@ -31,7 +32,12 @@ export interface IChampion {
   wins: number;
 }
 
-interface ImageObj {
+export interface IChampionInMatch {
+  imageUrl: string;
+  level: number;
+}
+
+export interface ImageObj {
   imageUrl: string;
 }
 
@@ -40,7 +46,7 @@ interface IMapInfo {
   mapId: number;
 }
 
-interface IGeneral {
+export interface IGeneral {
   assist: number;
   contributionForKillRate: string;
   cs: number;
@@ -65,7 +71,7 @@ interface IGameInfoStats {
 }
 
 export interface IGameInfo {
-  champion: IChampion;
+  champion: IChampionInMatch;
   createDate: number;
   gameId: string;
   gameLength: number;
@@ -81,6 +87,7 @@ export interface IGameInfo {
   summonerId: string;
   summonerName: string;
   tierRankShort: string;
+  gameDetail?: IMatchDetail;
 }
 
 export interface IPositions {

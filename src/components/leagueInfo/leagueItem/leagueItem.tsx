@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useMemo } from "react";
 import { ILeague } from "../../../datas/summoner";
+import { notNumberRegex } from "../../../tools/regex";
 import {
   StlyeLeagueType,
   StyleContainer,
@@ -23,7 +24,7 @@ const LeagueItem = ({ item }: IProps) => {
     return Math.round((item.wins / totalMatchCount) * 100);
   }, [totalMatchCount]);
   const tierInfo = useMemo(() => {
-    return `${item.tierRank.tier} ${item.tierRank.shortString.replace(/[^0-9]/g, "")}`;
+    return `${item.tierRank.tier} ${item.tierRank.shortString.replace(notNumberRegex, "")}`;
   }, []);
 
   return (

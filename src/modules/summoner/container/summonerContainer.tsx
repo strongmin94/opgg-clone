@@ -3,7 +3,7 @@ import { IMostInfoResponse } from "../../../datas/mostInfo";
 import { ISummoner } from "../../../datas/summoner";
 import UserInGameInfo from "../presenter/userInGameInfo/userInGameInfo";
 import UserSummary from "../presenter/userSummary/userSummary";
-import { StyleContainer } from "./mainContainer.styled";
+import { StyleContainer } from "./summonerContainer.styled";
 
 interface IProps {
   summoner: ISummoner;
@@ -11,7 +11,7 @@ interface IProps {
   matches: IMatchesResponse;
 }
 
-const MainContainer = ({ summoner, mostInfo, matches }: IProps) => {
+const SummonerContainer = ({ summoner, mostInfo, matches }: IProps) => {
   return (
     <StyleContainer>
       <UserSummary summoner={summoner} />
@@ -20,4 +20,4 @@ const MainContainer = ({ summoner, mostInfo, matches }: IProps) => {
   );
 };
 
-export default MainContainer;
+export default SummonerContainer;

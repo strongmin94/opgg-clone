@@ -1,3 +1,4 @@
+import InGameInfo from "../../../../components/inGameInfo/inGameInfo";
 import InGameSummary from "../../../../components/InGameSummary/inGameSummary";
 import LeagueInfo from "../../../../components/leagueInfo/leagueInfo";
 import MostInfo from "../../../../components/mostInfo/mostInfo";
@@ -7,6 +8,7 @@ import { IMostInfoResponse } from "../../../../datas/mostInfo";
 import { ILeague } from "../../../../datas/summoner";
 import {
   StyleContainer,
+  StyleGameInfoList,
   StyleInGameSummaryWrapper,
   StyleLeftWrapper,
   StyleRightWrapper,
@@ -24,7 +26,7 @@ const UserInGameInfo = ({
   mostInfo,
   matches: { champions, games, positions, summary },
 }: IProps) => {
-  const { matchTabList, selectedTab, setSelectedTab } = useUserInGameInfo({ games });
+  const { matchTabList, selectedTab, setSelectedTab, gameList } = useUserInGameInfo({ games });
 
   return (
     <StyleContainer>
@@ -37,6 +39,11 @@ const UserInGameInfo = ({
           <Navigation list={matchTabList} value={selectedTab} onChange={setSelectedTab} />
           <InGameSummary summary={summary} champions={champions} positions={positions} />
         </StyleInGameSummaryWrapper>
+        <StyleGameInfoList>
+          {gameList.map((item) => (
+            <InGameInfo key={`inGameInfo_${item.gameId}`} item={item} />
+          ))}
+        </StyleGameInfoList>
       </StyleRightWrapper>
     </StyleContainer>
   );

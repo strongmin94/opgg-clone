@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { IGameInfo, MATCH_TYPE } from "../../../../datas/match";
 import { ITabItem } from "../../../../datas/tabItem";
 
@@ -29,6 +29,14 @@ const useUserInGameInfo = ({ games }: IProps) => {
   }, []);
   const [selectedTab, setSelectedTab] = useState<IMatchTabItem>(matchTabList[0]);
   const [gameList, setGameList] = useState<Array<IGameInfo>>(games);
+
+  useEffect(() => {
+    if (selectedTab.value === MATCH_TYPE.ALL) {
+      setGameList(games);
+    } else {
+      setGameList(games.filter((item) => item.gameType === selectedTab.value));
+    }
+  }, [selectedTab]);
 
   return {
     matchTabList,
