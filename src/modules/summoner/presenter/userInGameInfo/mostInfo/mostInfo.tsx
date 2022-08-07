@@ -9,7 +9,9 @@ interface IProps {
 }
 
 const MostInfo = ({ mostInfo }: IProps) => {
-  const { selectedTab, setSelectedTab } = useMostInfo();
+  const { selectedTab, setSelectedTab, championList, recentWinRateList } = useMostInfo({
+    mostInfo,
+  });
 
   return (
     <StyleContainer>
@@ -26,11 +28,11 @@ const MostInfo = ({ mostInfo }: IProps) => {
       </StyleTabList>
       <StyleMostInfoList>
         {selectedTab.value === "champions"
-          ? mostInfo.champions.map((item, idx) => (
+          ? championList.map((item, idx) => (
               <MostChampionInfo key={`mostChampion_${idx}`} item={item} />
             ))
           : selectedTab.value === "recentWinRate"
-          ? mostInfo.recentWinRate.map((item, idx) => (
+          ? recentWinRateList.map((item, idx) => (
               <MostRecentWinRate key={`mostRecentWinRate_${idx}`} item={item} />
             ))
           : null}

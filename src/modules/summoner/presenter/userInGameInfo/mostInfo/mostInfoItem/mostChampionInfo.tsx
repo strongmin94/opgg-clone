@@ -17,11 +17,11 @@ interface IProps {
 
 const MostChampionInfo = ({ item }: IProps) => {
   const winRate = useMemo<number>(() => {
-    const result = Math.round((item.wins / item.games) * 100);
+    const result = Math.round((item.wins / item.games || 1) * 100);
     return !isNaN(result) ? result : 0;
   }, [item]);
   const csPercent = useMemo<number>(() => {
-    const result = parseFloat((item.cs / item.games).toFixed(1));
+    const result = parseFloat((item.cs / item.games || 1).toFixed(1));
     return !isNaN(result) ? result : 0;
   }, [item]);
   const { killAverage, deathAverage, assistAverage, kda } = useKda({
@@ -38,7 +38,7 @@ const MostChampionInfo = ({ item }: IProps) => {
         <StyleTopInfo>
           <StyleInfoItem textAlign="start">{item.name}</StyleInfoItem>
           <StyleInfoItem textAlign="center">
-            <StyleKDA kda={kda}>{`${kda}:1 평점`}</StyleKDA>
+            <StyleKDA kda={kda}>{`${kda.toFixed(2)}:1 평점`}</StyleKDA>
           </StyleInfoItem>
           <StyleInfoItem textAlign="end">
             <StyleWinRate winRate={winRate}>{`${winRate}%`}</StyleWinRate>

@@ -18,14 +18,14 @@ interface IProps {
 
 const PositionItem = ({ item, totalGameCount }: IProps) => {
   const positionRate = useMemo<number>(() => {
-    const result = Math.round((item.games / totalGameCount) * 100);
+    const result = Math.round((item.games / totalGameCount || 1) * 100);
     return !isNaN(result) ? result : 0;
   }, [totalGameCount]);
   const positionLabel = useMemo<string>(() => {
     return convertPosition(item.position as POSITION_TYPE);
   }, []);
   const winRate = useMemo(() => {
-    const result = Math.round((item.wins / item.games) * 100);
+    const result = Math.round((item.wins / item.games || 1) * 100);
     return !isNaN(result) ? result : 0;
   }, []);
 

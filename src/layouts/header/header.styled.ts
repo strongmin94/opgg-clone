@@ -7,6 +7,10 @@ export const StyleContainer = styled.header`
   justify-content: center;
   padding: 12px 0px;
   background-color: #1ea1f7;
+
+  @media screen and (max-width: 1000px) {
+    padding: 12px;
+  }
 `;
 
 export const StyleContentsWrapper = styled.div`

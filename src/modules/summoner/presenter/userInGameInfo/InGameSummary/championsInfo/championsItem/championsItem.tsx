@@ -18,7 +18,7 @@ interface IProps {
 
 const ChampionsItem = ({ item }: IProps) => {
   const winRate = useMemo<number>(() => {
-    const result = Math.round((item.wins / item.games) * 100);
+    const result = Math.round((item.wins / item.games || 1) * 100);
     return !isNaN(result) ? result : 0;
   }, [item]);
   const { kda } = useKda({
@@ -40,7 +40,7 @@ const ChampionsItem = ({ item }: IProps) => {
           </StyleChampionRecord>
           <StyleDivision />
           <StyleKDAInfo>
-            <StyleKDA kda={kda}>{`${kda} 평점`}</StyleKDA>
+            <StyleKDA kda={kda}>{`${kda.toFixed(2)} 평점`}</StyleKDA>
           </StyleKDAInfo>
         </p>
       </StyleDescriptionWrapper>

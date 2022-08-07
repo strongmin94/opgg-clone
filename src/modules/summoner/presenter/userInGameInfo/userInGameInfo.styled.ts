@@ -5,6 +5,7 @@ export const StyleContainer = styled.article`
   gap: 10px;
 
   @media screen and (max-width: 1000px) {
+    width: 100%;
     flex-direction: column;
   }
 `;

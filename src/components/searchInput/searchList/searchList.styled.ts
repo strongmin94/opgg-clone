@@ -31,17 +31,17 @@ export const StyleSearchList = styled.ul``;
 export const StyleSearchItem = styled.li`
   display: flex;
   padding: 4px 16px;
-`;
-
-export const StyleSearchLinkWrapper = styled.div`
-  flex: 1;
-  ${OneLineTextOverflow}
+  align-items: center;
+  :hover {
+    background-color: #f7f7f9;
+  }
 `;
 
 export const StyleSearchLink = styled.a`
-  max-width: 100%;
+  flex: 1;
   font-size: 14px;
   color: #44515c;
+  ${OneLineTextOverflow}
 `;
 
 export const StyleEmptySearchList = styled.div`

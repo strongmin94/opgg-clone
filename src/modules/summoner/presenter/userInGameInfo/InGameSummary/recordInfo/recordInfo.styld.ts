@@ -16,6 +16,12 @@ export const StyleRecordInfo = styled.div`
 export const StyleRecord = styled.p`
   font-size: 12px;
   color: #666666;
+  margin-bottom: 14px;
+`;
+
+export const StyleChartWrapper = styled.div`
+  width: 90px;
+  height: 90px;
 `;
 
 export const StyleKDAInfoWrapper = styled.div`

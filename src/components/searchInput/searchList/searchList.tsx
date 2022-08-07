@@ -8,7 +8,6 @@ import {
   StyleSearchItem,
   StyleEmptySearchList,
   StyleEmptyInfo,
-  StyleSearchLinkWrapper,
   StyleSearchLink,
   StyleRemoveButton,
 } from "./searchList.styled";
@@ -31,11 +30,9 @@ const SearchList = ({ searchList, onRemoveSearchItem }: IProps) => {
         <StyleSearchList>
           {searchList.map((item, idx) => (
             <StyleSearchItem key={`search_${idx}`}>
-              <StyleSearchLinkWrapper>
-                <Link href={`/summoner/${item}`} passHref>
-                  <StyleSearchLink>{item}</StyleSearchLink>
-                </Link>
-              </StyleSearchLinkWrapper>
+              <Link href={`/summoner/${item}`} passHref>
+                <StyleSearchLink>{item}</StyleSearchLink>
+              </Link>
               <StyleRemoveButton type="button" onClick={() => onRemoveSearchItem(item)}>
                 <Image src={"/icons/icon-close-small.svg"} width={24} height={24} />
               </StyleRemoveButton>

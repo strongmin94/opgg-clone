@@ -18,7 +18,7 @@ interface IProps {
 
 const MostRecentWinRate = ({ item }: IProps) => {
   const winRate = useMemo<number>(() => {
-    const result = Math.round((item.wins / (item.wins + item.losses)) * 100);
+    const result = Math.round((item.wins / (item.wins + item.losses) || 1) * 100);
     return !isNaN(result) ? result : 0;
   }, []);
   const lossRate = useMemo(() => {

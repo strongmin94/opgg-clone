@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { useMemo } from "react";
 import { useSelector } from "react-redux";
+import ToolTip from "../../../../../../components/tooltip/tooltip";
 import { IItemObject } from "../../../../../../datas/item";
 import { ImageObj } from "../../../../../../datas/match";
 import { RootState } from "../../../../../../redux/rootReducer";
@@ -12,6 +13,8 @@ import {
   StyleItemList,
   StyleVisionWardInfoWrapper,
   StyleVisionWardInfo,
+  StyleTooltipDescription,
+  StyleTooltipTitle,
 } from "./itemInfo.styled";
 
 interface IProps {
@@ -47,7 +50,18 @@ const ItemInfo = ({ items, isWin, visionWardsBought }: IProps) => {
       <StyleItemList>
         {renderItemList.map((item, idx) => (
           <StyleItem key={`item_${idx}`} isWin={isWin}>
-            {item && <StyleItemImage src={item.imageUrl} />}
+            {item && item.itemInfo && (
+              <ToolTip
+                tooltip={
+                  <>
+                    <StyleTooltipTitle>{item.itemInfo.name}</StyleTooltipTitle>
+                    <StyleTooltipDescription>{item.itemInfo.plaintext} </StyleTooltipDescription>
+                  </>
+                }
+              >
+                <StyleItemImage src={item.imageUrl} />
+              </ToolTip>
+            )}
           </StyleItem>
         ))}
       </StyleItemList>
