@@ -3,7 +3,6 @@ import styled, { css } from "styled-components";
 export const StyleContainer = styled.li`
   display: flex;
   height: 96px;
-  overflow: hidden;
 `;
 
 export const StyleContentsWrapper = styled.div<{ isWin: boolean }>`
